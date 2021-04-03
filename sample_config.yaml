@@ -1,0 +1,6 @@
+api_keys:
+  twitter: ''
+  reddit: ''
+  stocktwits: ''
+ml_config:
+  num_cores: 4
