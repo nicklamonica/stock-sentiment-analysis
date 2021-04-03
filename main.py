@@ -7,9 +7,13 @@ import yaml
 
 
 def config_loader(filepath):
-    with open(filepath, 'r') as file:
-        config = yaml.load(file, Loader=yaml.BaseLoader)
-    return config
+    try:
+        with open(filepath, 'r') as file:
+            config = yaml.load(file, Loader=yaml.BaseLoader)
+            return config
+    except:
+        print("You need a config.yaml file. Refer to the readme.md")
+        return
 
 
 if __name__ == '__main__':
