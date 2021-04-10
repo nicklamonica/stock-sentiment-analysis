@@ -1,10 +1,9 @@
-import yaml
 import requests
 import pandas as pd
 import json
 import ast
 import yaml
-
+from apis.stock_data import StockData
 
 def config_loader(filepath):
     try:
@@ -15,7 +14,11 @@ def config_loader(filepath):
         print("You need a config.yaml file. Refer to the readme.md")
         return
 
+def getData():
+    gme = StockData(ticker="GME")
+    price_data = gme.getPrice()
+    print(price_data['Close'])
 
 if __name__ == '__main__':
-    print('Hello world')
+    getData()
     print(config_loader("config.yaml"))
