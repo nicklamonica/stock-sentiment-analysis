@@ -1,9 +1,6 @@
-import requests
-import pandas as pd
-import json
-import ast
 import yaml
-from apis.stock_data import StockData
+from apis.stocks import StockData
+from apis.stocktwits import StockTwitsData
 
 def config_loader(filepath):
     try:
@@ -17,7 +14,8 @@ def config_loader(filepath):
 def getData():
     gme = StockData(ticker="GME")
     price_data = gme.getPrice()
-    print(price_data['Close'])
+    price_data['Close'].plot()
+    print(StockTwitsData().get_comments('TSLA'))
 
 if __name__ == '__main__':
     getData()

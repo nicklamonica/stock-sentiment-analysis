@@ -3,3 +3,4 @@ numpy==1.19.2
 pandas==1.2.3
 requests==2.24.0
 yfinance==0.1.59
+matplotlib==3.4.1
