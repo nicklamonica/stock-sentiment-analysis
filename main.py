@@ -12,6 +12,6 @@ def config_loader(filepath):
 
 if __name__ == '__main__':
     conf = config_loader("config.yaml")
-    t = Twitter(conf['api_config'])
+    t = Twitter(conf)
     data = t.getTweets('TSLA', 1, 1, 1)
     print(data)
