@@ -1,6 +1,5 @@
 import yaml
-from apis.stocks import StockData
-from apis.stocktwits import StockTwitsData
+from apis.twitter import Twitter
 
 def config_loader(filepath):
     try:
@@ -11,12 +10,8 @@ def config_loader(filepath):
         print("You need a config.yaml file. Refer to the readme.md")
         return
 
-def getData():
-    gme = StockData(ticker="GME")
-    price_data = gme.getPrice()
-    price_data['Close'].plot()
-    print(StockTwitsData().get_comments('TSLA'))
-
 if __name__ == '__main__':
-    getData()
-    print(config_loader("config.yaml"))
+    conf = config_loader("config.yaml")
+    t = Twitter(conf['api_config'])
+    data = t.getTweets('TSLA', 1, 1, 1)
+    print(data)

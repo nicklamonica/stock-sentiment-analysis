@@ -1,4 +1,4 @@
-api_keys:
+api_config:
   twitter: ''
   reddit: ''
   stocktwits: ''

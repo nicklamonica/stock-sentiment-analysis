@@ -39,10 +39,11 @@ TBD
     * https://arxiv.org/pdf/1607.01958.pdf  
     * https://journalofbigdata.springeropen.com/articles/10.1186/s40537-017-0111-6
     * https://link.springer.com/article/10.1007/s42979-020-0076-y
-* Tutorials 
+* Tutorials/explanations  
     * https://medium.com/@gabriel.mayers/sentiment-analysis-from-tweets-using-recurrent-neural-networks-ebf6c202b9d5
     * https://www.youtube.com/watch?v=LHXXI4-IEns
     * https://www.youtube.com/watch?v=8HyCNIVRbSU
+    * https://www.youtube.com/watch?v=6niqTuYFZLQ
 * API Docs
     * Twitter API: https://developer.twitter.com/en/docs
     * Yahoo finance python package: https://pypi.org/project/yfinance/
