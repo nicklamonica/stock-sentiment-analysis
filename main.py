@@ -14,8 +14,10 @@ def config_loader(filepath):
 
 def main():
     conf = config_loader("config.yaml")
+    # get data
     t = Twitter(conf)
     data = t.get_tweets('TSLA', 1, 1, 1)
+    # train model
     print(data)
 
 
