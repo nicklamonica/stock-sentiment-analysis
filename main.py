@@ -1,6 +1,7 @@
 import yaml
 from apis.twitter import Twitter
 
+
 def config_loader(filepath):
     try:
         with open(filepath, 'r') as file:
@@ -10,8 +11,13 @@ def config_loader(filepath):
         print("You need a config.yaml file. Refer to the readme.md")
         return
 
-if __name__ == '__main__':
+
+def main():
     conf = config_loader("config.yaml")
     t = Twitter(conf)
     data = t.getTweets('TSLA', 1, 1, 1)
     print(data)
+
+
+if __name__ == '__main__':
+    main()
