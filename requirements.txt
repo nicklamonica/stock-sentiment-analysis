@@ -2,6 +2,7 @@ pyyaml
 numpy
 pandas
 requests
+searchtweets
 yfinance
 matplotlib
 tensorflow
