@@ -9,13 +9,13 @@ def config_loader(filepath):
             return config
     except:
         print("You need a config.yaml file. Refer to the readme.md")
-        return
+        return None
 
 
 def main():
     conf = config_loader("config.yaml")
     t = Twitter(conf)
-    data = t.getTweets('TSLA', 1, 1, 1)
+    data = t.get_tweets('TSLA', 1, 1, 1)
     print(data)
 
 
