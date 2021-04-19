@@ -142,4 +142,3 @@ cython_debug/
 
 # Other files
 config.yaml
-*.csv
