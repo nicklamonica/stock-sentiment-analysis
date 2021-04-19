@@ -1,6 +1,8 @@
 import yaml
-from apis.twitter import Twitter
+import pandas as pd
 
+from apis.twitter import Twitter
+from models.rnn import RNN
 
 def config_loader(filepath):
     try:
@@ -13,12 +15,10 @@ def config_loader(filepath):
 
 
 def main():
-    conf = config_loader("config.yaml")
-    # get data
-    t = Twitter(conf)
-    data = t.get_tweets('TSLA', 1, 1, 1)
-    # train model
-    print(data)
+    rnn = RNN()
+    # t = Twitter()
+    # data = t.get_tweets("TSLA")
+    # rnn.driver(data)
 
 
 if __name__ == '__main__':

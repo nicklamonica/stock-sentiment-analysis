@@ -7,3 +7,4 @@ yfinance
 matplotlib
 tensorflow
 scikit-learn
+notebook

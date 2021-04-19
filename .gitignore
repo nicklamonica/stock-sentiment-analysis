@@ -140,5 +140,6 @@ cython_debug/
 # IDE and text editors
 .idea
 
-# Config files
+# Other files
 config.yaml
+*.csv
