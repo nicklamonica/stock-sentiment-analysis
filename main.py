@@ -1,8 +1,5 @@
 import yaml
-import pandas as pd
-
-from apis.twitter import Twitter
-from models.rnn import RNN
+from models.lstm import Lstm
 
 def config_loader(filepath):
     try:
@@ -15,10 +12,18 @@ def config_loader(filepath):
 
 
 def main():
-    rnn = RNN()
-    # t = Twitter()
-    # data = t.get_tweets("TSLA")
-    # rnn.driver(data)
+    # create rnn with lstm cells
+    lstm = Lstm()
+    lstm.build_model()
+
+    # get data
+
+    # split data into train and test
+
+    # train the model
+    lstm.train()
+
+    # test the model
 
 
 if __name__ == '__main__':
