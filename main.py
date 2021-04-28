@@ -44,8 +44,8 @@ def main():
 
     # split data into sample and
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-    print("done parsing data")
-    '''
+
+
     # create rnn with lstm cells
     lstm = Lstm()
     lstm.build_model(X.shape[1])
@@ -58,10 +58,9 @@ def main():
     # make predictions on test data
     predictions = lstm.predict(X_test)
     avg_neg = np.mean([prediction[0] for prediction in predictions])
-    avg_neu = np.mean([prediction[1] for prediction in predictions])
-    avg_pos = np.mean([prediction[2] for prediction in predictions])
-    print(avg_neg, avg_neu, avg_pos)
-    '''
+    avg_pos = np.mean([prediction[1] for prediction in predictions])
+    print(f"Average negative sentiment score = {avg_neg}\nAverage positive sentiment score = {avg_pos}")
+
 
 
 if __name__ == '__main__':
