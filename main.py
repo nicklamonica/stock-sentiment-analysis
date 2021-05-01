@@ -7,6 +7,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from models.lstm import Lstm
+from models.gru import Gru
 
 
 def config_loader(filepath):
@@ -45,7 +46,8 @@ def main():
     # split data into sample and
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-
+    '''
+    # LSTM MODEL TRAINING
     # create rnn with lstm cells
     lstm = Lstm()
     lstm.build_model(X.shape[1])
@@ -54,9 +56,24 @@ def main():
     lstm.train(X_train, y_train)
 
     # save model
-    lstm.save()
+    lstm.save("lstm_model")
     # make predictions on test data
     predictions = lstm.predict(X_test)
+    '''
+
+    # GRU MODEL TRAINING
+    gru = Gru()
+    gru.build_model(X.shape[1])
+
+    # train model
+    gru.train(X_train, y_train)
+
+    # save model
+    gru.save("gru_model")
+    # make predictions on test data
+    predictions = gru.predict(X_test)
+
+    # plot average predictions
     avg_neg = np.mean([prediction[0] for prediction in predictions])
     avg_pos = np.mean([prediction[1] for prediction in predictions])
     print(f"Average negative sentiment score = {avg_neg}\nAverage positive sentiment score = {avg_pos}")

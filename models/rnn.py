@@ -15,5 +15,5 @@ class Rnn:
     def predict(self, x):
         return self.model.predict(x)
 
-    def save(self):
-        self.model.save("lstm_model.h5", overwrite=True)
+    def save(self, model_name="model"):
+        self.model.save(f"models/{model_name}.h5", overwrite=True)
