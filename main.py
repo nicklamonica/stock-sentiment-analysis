@@ -26,12 +26,14 @@ def config_loader(filepath):
 
 if __name__ == '__main__':
 
+    # Getting user input
     val = input("Enter a term: ")
-
     n = input("Enter the number of similar terms to generate: ")
 
+    # Auth for Reddit API
     auth = requests.auth.HTTPBasicAuth("xQVhO_pVZaf_JA", "ZqXWXfLGyMy4uOKewtSOYiyUygG6iQ")
 
+    # Positive and Negative words for sentiment analysis
     pos_words = ["increase", "up", "buy", "large", "largest", "gain", "gains", "gained", "like", "winner", "winners", "valuable", "moon", "high", "higher", "call", "calls", "rise", "rising", "profit", "profits", "jump", "jumped", "jumping", "growth", "hypergrowth", "love", "good", "best"]
     neg_words = ["decrease", "down", "sell", "small", "smaller", "loss", "losses", "lost", "bad", "hate", "dislike", "loser", "losers", "worthless", "low", "lower", "put", "puts", "fall", "falling", "less", "drop", "dropping", "shrunk", "negative", "worst"]
 
@@ -59,38 +61,28 @@ if __name__ == '__main__':
     # Getting hot posts from r/pennystocks
     ps_hot = requests.get('https://oauth.reddit.com/r/pennystocks/hot', headers=headers).json()
 
-
     # Creating list of post titles
     wsb_data = "|POST|"
     inv_data = "|POST|"
     cc_data = "|POST|"
     ps_data = "|POST|"
 
-    c1 = 0
-    c2 = 0
-    c3 = 0
-    c4 = 0
-
     # Appending each post to its list with a delimiter
     for post in wsb_hot['data']['children']:
         wsb_data += (post['data']['title'] + " " + post['data']['selftext'])
         wsb_data += "|POST|"
-        c1 += 1
 
     for post in inv_hot['data']['children']:
         inv_data += (post['data']['title'] + " " + post['data']['selftext'])
         inv_data += "|POST|"
-        c2 += 1
 
     for post in cc_hot['data']['children']:
         cc_data += (post['data']['title'] + " " + post['data']['selftext'])
         cc_data += "|POST|"
-        c3 += 1
 
     for post in ps_hot['data']['children']:
         ps_data += (post['data']['title'] + " " + post['data']['selftext'])
         ps_data += "|POST|"
-        c4 += 1
 
     # Creating one list with all the data
     all_data = wsb_data + inv_data + cc_data + ps_data
