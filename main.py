@@ -22,10 +22,7 @@ def config_loader(filepath):
 
 
 def main(args):
-    if args[0] == "train":
-        train_models()
-    else:
-        predict()
+    train_models()
 
 
 def predict():
