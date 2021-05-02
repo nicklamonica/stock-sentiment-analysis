@@ -1,4 +1,5 @@
 import yaml
+import sys
 import pandas as pd
 import numpy as np
 import re
@@ -20,7 +21,20 @@ def config_loader(filepath):
         return None
 
 
-def main():
+def main(args):
+    if args[0] == "train":
+        train_models()
+    else:
+        predict()
+
+
+def predict():
+    # get real data
+    # load models
+    # use loaded models to predict data
+    pass
+
+def train_models():
     # read data
     df = pd.read_csv("apis/tweet_data.csv")
 
@@ -46,7 +60,7 @@ def main():
     # split data into sample and
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-    '''
+
     # LSTM MODEL TRAINING
     # create rnn with lstm cells
     lstm = Lstm()
@@ -59,7 +73,7 @@ def main():
     lstm.save("lstm_model")
     # make predictions on test data
     predictions = lstm.predict(X_test)
-    '''
+    # determine accuracy of predictions
 
     # GRU MODEL TRAINING
     gru = Gru()
@@ -72,13 +86,16 @@ def main():
     gru.save("gru_model")
     # make predictions on test data
     predictions = gru.predict(X_test)
+    # determine accuracy of predicionts
 
-    # plot average predictions
-    avg_neg = np.mean([prediction[0] for prediction in predictions])
-    avg_pos = np.mean([prediction[1] for prediction in predictions])
-    print(f"Average negative sentiment score = {avg_neg}\nAverage positive sentiment score = {avg_pos}")
-
-
+    # # plot average predictions
+    # avg_neg = np.mean([prediction[0] for prediction in predictions])
+    # avg_pos = np.mean([prediction[1] for prediction in predictions])
+    # print(f"Average negative sentiment score = {avg_neg}\nAverage positive sentiment score = {avg_pos}")
 
 if __name__ == '__main__':
-    main()
+    args = sys.argv[1:]
+    if len(args) == 0:
+        print("missing command line arguments, check README")
+    else:
+        main(args)
